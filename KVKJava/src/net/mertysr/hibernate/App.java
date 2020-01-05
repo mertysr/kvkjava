@@ -1,16 +1,10 @@
-package net.javaguides.hibernate;
-//import java.io.Console;
-import org.hibernate.Session;
-//import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+package net.mertysr.hibernate;
 
-import net.javaguides.hibernate.dao.UserDao;
-//import org.hibernate.cfg.Configuration;
-import net.javaguides.hibernate.model.Address;
-import net.javaguides.hibernate.model.Mobile;
-import net.javaguides.hibernate.model.User;
-import net.javaguides.hibernate.model.Vehicle;
-import net.javaguides.hibernate.util.HibernateUtil;
+import net.mertysr.hibernate.dao.UserDao;
+import net.mertysr.hibernate.model.Address;
+import net.mertysr.hibernate.model.Mobile;
+import net.mertysr.hibernate.model.User;
+import net.mertysr.hibernate.model.Vehicle;
 public class App {
 public static void main(String[] args) {
 	//User_1

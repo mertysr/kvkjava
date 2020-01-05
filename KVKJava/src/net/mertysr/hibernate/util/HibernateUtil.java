@@ -1,4 +1,4 @@
-package net.javaguides.hibernate.util;
+package net.mertysr.hibernate.util;
 
 import java.util.Properties;
 
@@ -8,10 +8,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import net.javaguides.hibernate.model.Address;
-import net.javaguides.hibernate.model.Mobile;
-import net.javaguides.hibernate.model.User;
-import net.javaguides.hibernate.model.Vehicle;
+import net.mertysr.hibernate.model.Address;
+import net.mertysr.hibernate.model.Mobile;
+import net.mertysr.hibernate.model.User;
+import net.mertysr.hibernate.model.Vehicle;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;

@@ -1,13 +1,13 @@
-package net.javaguides.hibernate.dao;
+package net.mertysr.hibernate.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import net.javaguides.hibernate.model.Address;
-import net.javaguides.hibernate.model.Mobile;
-import net.javaguides.hibernate.model.User;
-import net.javaguides.hibernate.model.Vehicle;
-import net.javaguides.hibernate.util.HibernateUtil;
+import net.mertysr.hibernate.model.Address;
+import net.mertysr.hibernate.model.Mobile;
+import net.mertysr.hibernate.model.User;
+import net.mertysr.hibernate.model.Vehicle;
+import net.mertysr.hibernate.util.HibernateUtil;
 
 public class UserDao {
 	public void saveUser(User user) {

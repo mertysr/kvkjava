@@ -1,4 +1,4 @@
-package net.javaguides.hibernate.model;
+package net.mertysr.hibernate.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

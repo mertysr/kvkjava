@@ -1,4 +1,4 @@
-package net.javaguides.hibernate.model;
+package net.mertysr.hibernate.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name="user_details")
 public class User {

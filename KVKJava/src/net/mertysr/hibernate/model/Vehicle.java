@@ -1,4 +1,4 @@
-package net.javaguides.hibernate.model;
+package net.mertysr.hibernate.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
