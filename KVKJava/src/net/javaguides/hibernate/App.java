@@ -1,101 +1,54 @@
 package net.javaguides.hibernate;
 //import java.io.Console;
-//import org.hibernate.Session;
+import org.hibernate.Session;
 //import org.hibernate.SessionFactory;
-//import org.hibernate.Transaction;
+import org.hibernate.Transaction;
+
+import net.javaguides.hibernate.dao.UserDao;
 //import org.hibernate.cfg.Configuration;
 import net.javaguides.hibernate.model.Address;
 import net.javaguides.hibernate.model.Mobile;
 import net.javaguides.hibernate.model.User;
 import net.javaguides.hibernate.model.Vehicle;
-//import net.javaguides.hibernate.util.HibernateUtil;
+import net.javaguides.hibernate.util.HibernateUtil;
 public class App {
 public static void main(String[] args) {
-	User usr=new User("Mert");
-	Address adr=new Address("street","city",usr);
-	Mobile mbl=new Mobile("Huawei","p9",usr);
+	//User_1
+	User usr=new User();
+	usr.setUserName("User_1");
+	Address adr=new Address("Street","City",usr);
 	usr.setAddress(adr);
-	User user=new User();
-	User user2=new User();
-	user2.setUserName("Dev");
-	user.setUserName("Ankit");
-	Address address= new Address();
-	address.setStreet("sector 15");
-	address.setCity("noida");
-	Address address2=new Address();
-	address2.setCity("Muzaffarpur");
-	address2.setStreet("sahebganj");
-	Vehicle veh=new Vehicle();
-	veh.setName("car");
-	Vehicle vehicle=new Vehicle();
-	vehicle.setName("jeep");
-	Vehicle vehicle2= new Vehicle();
-	vehicle2.setName("Bike");
-	Vehicle vehicle3= new Vehicle();
-	vehicle3.setName("Bus");
-	Vehicle vehicle4=new Vehicle();
-	vehicle4.setName("cycle");
-	Vehicle vehicle5= new Vehicle();
-	vehicle5.setName("Truck");
-	Mobile mobile =new Mobile();
-	mobile.setBrand("sony");
-	mobile.setModel("xperia z3");
-	Mobile mobile2 = new Mobile();
-	mobile2.setBrand("Redmi");
-	mobile2.setModel("Note 5 pro");
-	Mobile mobile3 = new Mobile();
-	mobile3.setBrand("Nokia");
-	mobile3.setModel("7 plus");
-	user.setAddress(address);
-	user2.setAddress(address2);
-	address.setUser(user);
-	address2.setUser(user2);
-	user.getMobile().add(mobile);
-	user.getMobile().add(mobile2);
+	Vehicle vhc=new Vehicle("Vehicle");
+	usr.getVehicle().add(vhc);
+	vhc.getUser().add(usr);
+	Mobile mbl=new Mobile("Brand","Model");
+	usr.getMobile().add(mbl);
+	mbl.setUser(usr);
 	
-	mobile.setUser(user);
-	mobile2.setUser(user);
-	user2.getMobile().add(mobile3);
-	mobile3.setUser(user2);
-	user.getVehicle().add(veh);
-	user.getVehicle().add(vehicle);
-	user.getVehicle().add(vehicle2);
-	veh.getUser().add(user);
-	vehicle.getUser().add(user);
-	vehicle2.getUser().add(user);
-	user2.getVehicle().add(vehicle3);
-	user2.getVehicle().add(vehicle4);
-	user2.getVehicle().add(vehicle5);
-	vehicle3.getUser().add(user2);
-	vehicle4.getUser().add(user2);
-	vehicle5.getUser().add(user2);
-
-	/*Transaction transaction =null;
-	try(Session session=HibernateUtil.getSessionFactory().openSession()){
-		System.out.println("dada");
-		transaction = session.beginTransaction();
-		session.save(user);
-		session.save(user2);
-		transaction.commit();
-	}catch (Exception e) {
-		if (transaction!=null) {
-			transaction.rollback();
-		}
-	}
-	Mobile addresss=null;
-	Mobile addressss=null;
-	try(Session session=HibernateUtil.getSessionFactory().openSession()){
-		transaction = session.beginTransaction();
-
-		addresss = session.get(Mobile.class, 3);
-		addressss = session.get(Mobile.class, 10);
-		session.delete(addresss);
-		session.delete(addressss);
-		transaction.commit();
-	}catch (Exception e) {
-		if (transaction!=null) {
-			transaction.rollback();
-		}
-	}*/
+	//User_2
+	User usrr=new User();
+	usrr.setUserName("User_2");
+	Address adrr=new Address("Street_2","City_2",usr);
+	usrr.setAddress(adrr);
+	Vehicle vhcc=new Vehicle("Vehicle_2");
+	Vehicle vhccc=new Vehicle("Vehicle_2_1");
+	usrr.getVehicle().add(vhcc);
+	vhcc.getUser().add(usrr);
+	usrr.getVehicle().add(vhcc);
+	vhccc.getUser().add(usrr);
+	Mobile mbll=new Mobile("Brand","Model");
+	usrr.getMobile().add(mbll);
+	mbll.setUser(usrr);
+	
+	//save
+	UserDao userDao=new UserDao();
+	userDao.saveUser(usr);
+	userDao.saveUser(usrr);
+	//update
+	usr.setUserName("deneme");
+	userDao.updateUser(usr);
+	
+	//delete
+	//userDao.deleteUser(5);
 }}
 

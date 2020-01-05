@@ -14,7 +14,11 @@ public class Vehicle {
 	private int id;
 	private String name;
 	@ManyToMany(mappedBy="vehicle")
-	private Collection<User> user=new ArrayList<>();;
+	private Collection<User> user=new ArrayList<>();
+	public Vehicle() {}
+	public Vehicle(String name) {
+		this.name=name;
+	}
 	public int getId() {
 		return id;
 	}

@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name="user_details")
 public class User {
@@ -21,20 +24,19 @@ public class User {
 private int id;
 private String userName;
 @ManyToMany(cascade=CascadeType.ALL)
+//@OnDelete(action = OnDeleteAction.CASCADE)
 @JoinTable(name="usr_vehicle",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="vehicle_id") )
 private Collection<Vehicle> vehicle=new ArrayList<>();
-@OneToOne(cascade=CascadeType.ALL)
+@OneToOne(cascade=CascadeType.ALL,orphanRemoval=true)
+//@OnDelete(action = OnDeleteAction.CASCADE)
 @JoinColumn(name="address_id")
 private Address address;
-@OneToMany(cascade=CascadeType.ALL)
+@OneToMany(cascade=CascadeType.ALL,orphanRemoval=true)
+//@OnDelete(action = OnDeleteAction.CASCADE)
 @JoinTable(name="user_mobile_mapping",joinColumns=@JoinColumn(name="user_id"),inverseJoinColumns=@JoinColumn(name="mobile_id"))
 private Collection<Mobile> mobile=new ArrayList<>();
 public User() {}
 public User(String userName) {
-	this.userName = userName;
-}
-public User(String userName, Address address) {
-	this.address = address;
 	this.userName = userName;
 }
 public Collection<Mobile> getMobile() {
