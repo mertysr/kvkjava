@@ -40,9 +40,11 @@ public User(String userName) {
 public Collection<Mobile> getMobile() {
 	return mobile;
 }
+//DataCollection
 public void setMobile(Collection<Mobile> mobile) {
 	this.mobile = mobile;
 }
+//DataCollection
 public Collection<Vehicle> getVehicle() {
 	return vehicle;
 }

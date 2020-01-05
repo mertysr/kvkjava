@@ -1,5 +1,8 @@
 package net.mertysr.hibernate;
 
+import java.util.List;
+
+
 import net.mertysr.hibernate.dao.UserDao;
 import net.mertysr.hibernate.model.Address;
 import net.mertysr.hibernate.model.Mobile;
@@ -13,7 +16,7 @@ public static void main(String[] args) {
 	Address adr=new Address("Street","City",usr);
 	usr.setAddress(adr);
 	Vehicle vhc=new Vehicle("Vehicle");
-	usr.getVehicle().add(vhc);
+	usr.getVehicle().add(vhc); //DataCollection using
 	vhc.getUser().add(usr);
 	Mobile mbl=new Mobile("Brand","Model");
 	usr.getMobile().add(mbl);
@@ -38,9 +41,16 @@ public static void main(String[] args) {
 	UserDao userDao=new UserDao();
 	userDao.saveUser(usr);
 	userDao.saveUser(usrr);
+	
 	//update
 	usr.setUserName("deneme");
 	userDao.updateUser(usr);
+	
+	//showAllStudent
+	List<User> user=userDao.getAllStudents();
+	for(int i=0;i<userDao.getAllStudents().size();i++) {
+		System.out.println(user.get(i));
+	}
 	
 	//delete
 	//userDao.deleteUser(5);

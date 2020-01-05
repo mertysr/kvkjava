@@ -1,12 +1,12 @@
 package net.mertysr.hibernate.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import net.mertysr.hibernate.model.Address;
-import net.mertysr.hibernate.model.Mobile;
+
 import net.mertysr.hibernate.model.User;
-import net.mertysr.hibernate.model.Vehicle;
 import net.mertysr.hibernate.util.HibernateUtil;
 
 public class UserDao {
@@ -34,6 +34,22 @@ public class UserDao {
 			}
 		}
 	}
+	@SuppressWarnings("unchecked")
+	public List<User> getAllStudents() {
+		Transaction transaction =null;
+		List<User> students=null;
+		try(Session session=HibernateUtil.getSessionFactory().openSession()){
+			transaction = session.beginTransaction();
+			students=session.createQuery("from User").list();
+			transaction.commit();
+		}catch (Exception e) {
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+		}
+		return students;
+	}
+	
 	public User deleteUser(int id) {
 		Transaction transaction =null;
 		User user=null;
