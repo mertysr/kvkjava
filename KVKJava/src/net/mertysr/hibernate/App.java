@@ -1,5 +1,6 @@
 package net.mertysr.hibernate;
 
+
 import java.util.List;
 
 
@@ -11,6 +12,7 @@ import net.mertysr.hibernate.model.Vehicle;
 public class App {
 public static void main(String[] args) {
 	//User_1
+	//Builder Creational
 	User usr=new User();
 	usr.setUserName("User_1");
 	Address adr=new Address("Street","City",usr);
@@ -25,14 +27,24 @@ public static void main(String[] args) {
 	//User_2
 	User usrr=new User();
 	usrr.setUserName("User_2");
-	Address adrr=new Address("Street_2","City_2",usr);
+	Address adrr=new Address("Street_2","City_2",usrr);
 	usrr.setAddress(adrr);
-	Vehicle vhcc=new Vehicle("Vehicle_2");
-	Vehicle vhccc=new Vehicle("Vehicle_2_1");
-	usrr.getVehicle().add(vhcc);
-	vhcc.getUser().add(usrr);
-	usrr.getVehicle().add(vhcc);
-	vhccc.getUser().add(usrr);
+	final Vehicle[] vehicle = new Vehicle[2]; //Bridge Structural
+	vehicle[0]=new Vehicle("Vehicle_2");
+	vehicle[1] =new Vehicle("Vehicle_2_1");
+	//Add mobile..
+	for(int i=0;i<vehicle.length;i++) {
+		usrr.getVehicle().add(vehicle[i]);
+		vehicle[i].getUser().add(usrr);
+	}
+	
+	final Mobile[] mobile = new Mobile[1];
+	mobile[0]=new Mobile("Brand","Model");
+	//Add mobile..
+	for(int i=0;i<mobile.length;i++) {
+		usrr.getMobile().add(mobile[i]);
+		mobile[i].setUser(usrr);
+	}
 	Mobile mbll=new Mobile("Brand","Model");
 	usrr.getMobile().add(mbll);
 	mbll.setUser(usrr);
