@@ -1,5 +1,5 @@
 package net.mertysr.hibernate.model;
-
+//Private Class Data
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,7 +26,7 @@ public class Mobile {
 		this.id = id;
 	}
 	public String getBrand() {
-		return brand;
+		return brand; 
 	}
 	public void setBrand(String brand) {
 		this.brand = brand;

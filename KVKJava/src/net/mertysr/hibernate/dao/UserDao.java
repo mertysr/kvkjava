@@ -1,8 +1,10 @@
 package net.mertysr.hibernate.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 
@@ -10,16 +12,14 @@ import net.mertysr.hibernate.model.User;
 import net.mertysr.hibernate.util.HibernateUtil;
 
 public class UserDao {
+	@Autowired
+    private SessionFactory sessionFactory;
 	public void saveUser(User user) {
 		Transaction transaction =null;
 		try(Session session=HibernateUtil.getSessionFactory().openSession()){
 			transaction = session.beginTransaction();
 			session.save(user);
 			transaction.commit();
-		}catch (Exception e) {
-			if (transaction!=null) {
-				transaction.rollback();
-			}
 		}
 	}
 	public void updateUser(User user) {
@@ -28,11 +28,9 @@ public class UserDao {
 			transaction = session.beginTransaction();
 			session.saveOrUpdate(user);
 			transaction.commit();
-		}catch (Exception e) {
-			if (transaction!=null) {
-				transaction.rollback();
-			}
 		}
+			
+		
 	}
 	@SuppressWarnings("unchecked")
 	public List<User> getAllStudents() {
@@ -61,16 +59,9 @@ public class UserDao {
 			session.delete(user);
 			
 			transaction.commit();
-		}catch (Exception e) {
-			if (transaction!=null) {
-				System.out.println(e.getMessage());
-				//transaction.rollback();
-			}
 		}
 		return user;
-		
-		
-		
 	}
+	
 	
 }

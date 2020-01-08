@@ -17,7 +17,8 @@ public class Test {
 	public void saveTest()
 	{ 
 		usr.setUserName("User_1");
-		Address adr=new Address("Street","City",usr);
+		Address adr=new Address("Street","City");
+		adr.setUser(usr);
 		usr.setAddress(adr);
 		Vehicle vhc=new Vehicle("Vehicle");
 		usr.getVehicle().add(vhc); 

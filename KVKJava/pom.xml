@@ -29,6 +29,12 @@
         	<version>5.4.2</version>
         	<scope>test</scope>
     	</dependency>
+    	<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-beans</artifactId>
+    <version>5.2.2.RELEASE</version>
+</dependency>
 	</dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
