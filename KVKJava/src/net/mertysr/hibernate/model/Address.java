@@ -16,23 +16,10 @@ public class Address implements Cloneable {
 		this.street = street;
 		this.city = city;
 	}
-	public String getStreet() {
-		return street;
-	}
-	public String getCity() {
-		return city;
-	}
-	public User getUser() {
-		return user;
-	}	
+	
+
 	public void setUser(User user) {
 		this.user = user;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	protected Address getCopy() {
 
@@ -42,9 +29,5 @@ public class Address implements Cloneable {
 	      e.printStackTrace();
 	      return null;
 	    }
-	  }
-	 @Override
-	  public String toString() {
-	    return "[street=" + street + ", city=" + city + "]";
 	  }
 }

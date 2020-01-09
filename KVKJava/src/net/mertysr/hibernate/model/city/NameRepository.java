@@ -2,7 +2,7 @@ package net.mertysr.hibernate.model.city;
 
 public class NameRepository implements Container{
 	public String names[] = {"Klaipeda" , "Vilnius" ,"Kaunas" , "Siauliai"};
-
+	public int namesLength=names.length;
 	   @Override
 	   public Iterator getIterator() {
 	      return new NameIterator();
